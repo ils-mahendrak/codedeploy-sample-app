@@ -1,3 +1,3 @@
 #!/bin/bash
-sudo rm -r /web/*
+sudo rm -r /home/ec2-user/web/*
 
