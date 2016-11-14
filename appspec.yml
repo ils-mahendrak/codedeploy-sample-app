@@ -1,15 +1,19 @@
---- 
-files: 
-  - 
-    destination: /home/ec2-user/web
-    source: /
-hooks: 
-  ApplicationStart: 
-    - 
-      location: scripts/start_server.sh
-      timeout: 300
-  BeforeInstall: 
-    - 
-      location: scripts/clean_public_dir.sh
-os: linux
 version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ec2-user/web
+hooks:
+  BeforeInstall:
+    - location: scripts/clean_public_dir.sh
+      timeout: 300
+      runas: root
+      
+  ApplicationStop:
+    - location: scripts/stop_server
+      timeout: 300
+      runas: root
+
+  ApplicationStart:
+    -location: scripts/start_server.sh
+    
