@@ -4,10 +4,7 @@ files:
   - source: /
     destination: /home/ec2-user/web
 hooks:
-  BeforeInstall:
-    - location: scripts/clean_public_dir.sh
-      timeout: 300
-      runas: root
+  
       
   ApplicationStop:
     - location: scripts/stop_server
